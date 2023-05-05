@@ -13,6 +13,7 @@ namespace VendasWebMVC.Models
         public DateTime DateNasc { get; set; }
         public double SalarioBase { get; set; }
         public Departamento Departamentos { get; set; }
+        public int DepartmentoId { get; set; }
         public ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
 
         public Vendedor()

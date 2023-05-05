@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VendasWebMVC.Data;
+using VendasWebMVC.Models;
 
 namespace VendasWebMVC.Migrations
 {
@@ -57,6 +57,8 @@ namespace VendasWebMVC.Migrations
                     b.Property<DateTime>("DateNasc");
 
                     b.Property<int?>("DepartamentosId");
+
+                    b.Property<int>("DepartmentoId");
 
                     b.Property<string>("Email");
 

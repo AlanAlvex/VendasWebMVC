@@ -4,14 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VendasWebMVC.Data;
 using VendasWebMVC.Models;
 
 namespace VendasWebMVC.Migrations
 {
     [DbContext(typeof(VendasWebMVCContext))]
-    [Migration("20230504202145_OutrasMigracoes")]
-    partial class OutrasMigracoes
+    [Migration("20230505153555_DepartamentoForeignKey")]
+    partial class DepartamentoForeignKey
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,6 +59,8 @@ namespace VendasWebMVC.Migrations
                     b.Property<DateTime>("DateNasc");
 
                     b.Property<int?>("DepartamentosId");
+
+                    b.Property<int>("DepartmentoId");
 
                     b.Property<string>("Email");
 
