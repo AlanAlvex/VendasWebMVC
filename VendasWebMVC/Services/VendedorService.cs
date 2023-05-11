@@ -31,7 +31,7 @@ namespace VendasWebMVC.Services
 
         public Vendedor FindById(int Id)
         {
-            return _context.Vendedor.Include(p => p.Departamentos).FirstOrDefault(p => p.Id == Id);
+            return _context.Vendedor.Include(p => p.Departamento).FirstOrDefault(p => p.Id == Id);
         }
 
         public void Remove(int Id)
@@ -44,7 +44,7 @@ namespace VendasWebMVC.Services
 
         public void Update(Vendedor vendedor)
         {
-            if (_context.Vendedor.Any(p => p.Id == vendedor.Id))
+            if (!_context.Vendedor.Any(p => p.Id == vendedor.Id))
             {
                 throw new NotFoundException("Id não encontrado!");
             }

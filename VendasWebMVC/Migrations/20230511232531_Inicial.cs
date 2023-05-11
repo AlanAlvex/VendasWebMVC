@@ -4,10 +4,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VendasWebMVC.Migrations
 {
-    public partial class OutrasMigracoes : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Departamento",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departamento", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Vendedor",
                 columns: table => new
@@ -18,17 +31,17 @@ namespace VendasWebMVC.Migrations
                     Email = table.Column<string>(nullable: true),
                     DateNasc = table.Column<DateTime>(nullable: false),
                     SalarioBase = table.Column<double>(nullable: false),
-                    DepartamentosId = table.Column<int>(nullable: true)
+                    DepartamentoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vendedor", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Vendedor_Departamento_DepartamentosId",
-                        column: x => x.DepartamentosId,
+                        name: "FK_Vendedor_Departamento_DepartamentoId",
+                        column: x => x.DepartamentoId,
                         principalTable: "Departamento",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,9 +72,9 @@ namespace VendasWebMVC.Migrations
                 column: "VendedorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Vendedor_DepartamentosId",
+                name: "IX_Vendedor_DepartamentoId",
                 table: "Vendedor",
-                column: "DepartamentosId");
+                column: "DepartamentoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -71,6 +84,9 @@ namespace VendasWebMVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "Vendedor");
+
+            migrationBuilder.DropTable(
+                name: "Departamento");
         }
     }
 }

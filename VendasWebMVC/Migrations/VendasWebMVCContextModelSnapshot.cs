@@ -56,9 +56,7 @@ namespace VendasWebMVC.Migrations
 
                     b.Property<DateTime>("DateNasc");
 
-                    b.Property<int?>("DepartamentosId");
-
-                    b.Property<int>("DepartmentoId");
+                    b.Property<int>("DepartamentoId");
 
                     b.Property<string>("Email");
 
@@ -68,7 +66,7 @@ namespace VendasWebMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartamentosId");
+                    b.HasIndex("DepartamentoId");
 
                     b.ToTable("Vendedor");
                 });
@@ -82,9 +80,10 @@ namespace VendasWebMVC.Migrations
 
             modelBuilder.Entity("VendasWebMVC.Models.Vendedor", b =>
                 {
-                    b.HasOne("VendasWebMVC.Models.Departamento", "Departamentos")
+                    b.HasOne("VendasWebMVC.Models.Departamento", "Departamento")
                         .WithMany("Vendedores")
-                        .HasForeignKey("DepartamentosId");
+                        .HasForeignKey("DepartamentoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

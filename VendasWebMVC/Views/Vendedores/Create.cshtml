@@ -28,8 +28,8 @@
                 <input asp-for="Vendedor.SalarioBase" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Vendedor.DepartmentoId" class="control-label"></label>
-                <select asp-for="Vendedor.DepartmentoId" asp-items="@(new SelectList(Model.Departamentos,"Id", "Nome"))" class="form-control"></select>
+                <label asp-for="Vendedor.DepartamentoId" class="control-label"></label>
+                <select asp-for="Vendedor.DepartamentoId" asp-items="@(new SelectList(Model.Departamentos,"Id", "Nome"))" class="form-control"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Cadastar" class="btn btn-default" />

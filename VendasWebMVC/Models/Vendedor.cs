@@ -12,22 +12,22 @@ namespace VendasWebMVC.Models
         public string Email { get; set; }
         public DateTime DateNasc { get; set; }
         public double SalarioBase { get; set; }
-        public Departamento Departamentos { get; set; }
-        public int DepartmentoId { get; set; }
+        public Departamento Departamento { get; set; }
+        public int DepartamentoId { get; set; }
         public ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
 
         public Vendedor()
         {
         }
 
-        public Vendedor(int id, string nome, string email, DateTime dateNasc, double salarioBase, Departamento departamentos)
+        public Vendedor(int id, string nome, string email, DateTime dateNasc, double salarioBase, Departamento departamento)
         {
             Id = id;
             Nome = nome;
             Email = email;
             DateNasc = dateNasc;
             SalarioBase = salarioBase;
-            Departamentos = departamentos;
+            Departamento = departamento;
         }
 
         public void AddPedido(Pedido pedido)
