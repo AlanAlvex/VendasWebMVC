@@ -41,14 +41,14 @@ namespace VendasWebMVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Delete(int? Id)
+        public IActionResult Delete(int? id)
         {
-            if (Id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var obj = _vendedorService.FindById(Id.Value);
+            var obj = _vendedorService.FindById(id.Value);
             if (obj == null)
             {
                 return NotFound();
@@ -64,6 +64,22 @@ namespace VendasWebMVC.Controllers
         {
             _vendedorService.Remove(id);
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _vendedorService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
         }
     }
 }
