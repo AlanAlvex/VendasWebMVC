@@ -40,9 +40,23 @@ namespace VendasWebMVC.Controllers
             return View(result);
         }
 
-        public IActionResult BuscaGrupo()
+        public async Task<IActionResult> BuscaGrupo(DateTime? minDate, DateTime? maxDate)
         {
-            return View();
+            if (!minDate.HasValue)
+            {
+                minDate = new DateTime(DateTime.Now.Year, 1, 1);
+            }
+
+            if (!minDate.HasValue)
+            {
+                minDate = DateTime.Now;
+            }
+
+            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = minDate.Value.ToString("yyyy-MM-dd");
+
+            var result = await _pedidoService.FindByDateAgrupAsync(minDate, maxDate);
+            return View(result);
         }
     }
 }
